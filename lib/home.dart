@@ -33,7 +33,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     initsound();
   }
 
-  fallingCoins({int nbCoin = 5}) async {
+  fallingCoins({int nbCoin = 5, double coinHeight = 240, required double screenHeight}) async {
+    debugPrint('screen height: $screenHeight');
     streamcoins = (() async* {
       for (var i = 0; i < nbCoin; i++) {
         var coinValue = Helper.randominteger(min: 1, max: 20);
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         var dx = Random().nextDouble();
         var controller = AnimationController(vsync: ticker, duration: Duration(milliseconds: duration));
         await Future<void>.delayed(Duration(milliseconds: delay));
-        yield StreamedCoin(value: coinValue, controller: controller, begin: Offset(dx, -6.0), end: Offset(dx, 1.0));
+        yield StreamedCoin(value: coinValue, controller: controller, begin: Offset(dx, -(screenHeight/coinHeight)), end: Offset(dx, 1.0));
       }
     })();
   }
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            fallingCoins(nbCoin: Helper.randominteger(min: 1, max: 12));
+            fallingCoins(nbCoin: Helper.randominteger(min: 1, max: 12), screenHeight: MediaQuery.of(context).size.height);
           });
         },
         tooltip: 'make coins fall from the sky',
