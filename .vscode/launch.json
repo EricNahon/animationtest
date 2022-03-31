@@ -7,6 +7,7 @@
         {
             "name": "animationtest",
             "request": "launch",
+            "deviceId": "chrome",
             "type": "dart"
         },
         {
