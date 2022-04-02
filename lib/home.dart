@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'fallingcoins/coin_streamer.dart';
-import 'fallingcoins/coin_animation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,15 +10,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  late TickerProvider ticker;
-  Stream<CoinAnimation>? streamcoins;
   late CoinStreamer coinstreamer;
 
   @override
   void initState() {
     super.initState();
     coinstreamer = CoinStreamer(ticker: this);
-    ticker = this;
   }
 
   @override

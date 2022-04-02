@@ -26,7 +26,6 @@ class CoinStreamer {
   late Soundpool soundpool;
 
   startfallingcoins({int nbCoin = 5, double coinHeight = 240, required double screenHeight}) async {
-    debugPrint('screen height: $screenHeight');
     streamcoins = (() async* {
       for (var i = 0; i < nbCoin; i++) {
         var coinValue = randominteger(min: 1, max: 20);
