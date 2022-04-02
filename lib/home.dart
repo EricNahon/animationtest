@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         var duration = Helper.randominteger(max: 500) + 1200;
         var delay = i < nbCoin - 1 ? Helper.randominteger(min: 200, max: 600) : duration + Helper.randominteger(min: 100, max: 400);
         var dx = Random().nextDouble();
-        dx = Random().nextDouble() < 0.5 ? dx : -dx;
+        dx = Random().nextDouble() < 0.5 ? dx : -dx; // horizontal start position = dx * coin width
         var controller = AnimationController(vsync: ticker, duration: Duration(milliseconds: duration));
         await Future<void>.delayed(Duration(milliseconds: delay));
         yield StreamedCoin(value: coinValue, controller: controller, begin: Offset(dx, -(screenHeight/coinHeight)), end: Offset(dx, 1.0));
