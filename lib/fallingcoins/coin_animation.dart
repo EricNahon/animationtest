@@ -1,7 +1,7 @@
-import 'package:animationtest/constants.dart';
 import 'package:flutter/material.dart';
+import 'coin_constants.dart';
 
-class StreamedCoin {
+class CoinAnimation {
   AnimationController controller;
   late int value;
   late String imagePath;
@@ -10,10 +10,10 @@ class StreamedCoin {
   late Offset begin;
   late Offset end;
 
-  StreamedCoin({
+  CoinAnimation({
     required this.controller,
     this.value = 10,
-    this.imagePath = Constants.assetsImagePath + Constants.coinImage,
+    this.imagePath = CoinConstants.assetsImagePath + CoinConstants.coinImage,
     this.begin = const Offset(0.2, -7.0),
     this.end = const Offset(0.2, 1.0),
   }) {
